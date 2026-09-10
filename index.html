@@ -658,7 +658,7 @@ code {
       <dt>Language</dt>
       <dd class="t1"><span class="chip">Java 17</span></dd>
       <dt>Framework</dt>
-      <dd class="t2"><span class="chip">Spring Boot</span><span class="chip">Spring Data JPA</span><span class="chip">Spring Security</span><span class="chip">Spring AI</span><span class="chip">QueryDSL</span></dd>
+      <dd class="t2"><span class="chip">Spring Boot</span><span class="chip">Spring Data JPA</span><span class="chip">QueryDSL</span></dd>
       <dt>Database</dt>
       <dd class="t3"><span class="chip">MySQL</span><span class="chip">Redis</span></dd>
       <dt>Infra</dt>
@@ -710,10 +710,16 @@ code {
           </div>
 
           <div class="entry">
-            <div class="entry-head"><h4>결제 처리와 실시간 상담 구현</h4></div>
+            <div class="entry-head"><h4>결제 처리와 환불 구현</h4></div>
             <ul>
-              <li>결제 생성·조회와 환불 처리를 구현. <strong>승인과 거절이 동시에 들어올 때 두 요청이 모두 성공하던 경합</strong>을 발견해 잠금으로 차단.<br><span class="fig">※ PG(PortOne) 연동 자체는 팀원 담당</span></li>
-              <li>WebSocket·STOMP 로 1:1 상담을 구현하면서, 연결·구독·발행 <strong>세 지점 모두에서</strong> 참여자 여부를 검사. 구독만 막으면 남의 방에 메시지를 밀어 넣을 수 있기 때문.</li>
+              <li>결제 생성·조회와 환불 요청 처리를 구현. <strong>하나의 환불 요청에 승인과 거절이 동시에 들어오면 두 요청이 모두 통과하던 경합</strong>을 발견해 잠금으로 차단. 동시성 테스트에서 <span class="fig">8회 중 8회</span> 통과하던 것이 <span class="fig">1회</span>만 성공하도록 바뀐 것을 확인.</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <div class="entry-head"><h4>실시간 1:1 상담 구현</h4></div>
+            <ul>
+              <li>WebSocket·STOMP 로 1:1 상담을 구현하면서, 연결·구독·발행 <strong>세 지점 모두에서</strong> 참여자 여부를 검사. 인증된 사용자가 자신이 참여한 상담방에만 접근하도록 경계를 고정.</li>
               <li>메시지는 저장에 성공한 경우에만 발행되도록 순서를 고정해, 화면에는 보이는데 기록에 없는 메시지가 생기지 않도록 처리.</li>
             </ul>
           </div>
@@ -721,7 +727,7 @@ code {
           <div class="entry">
             <div class="entry-head"><h4>Redis 캐시 SPOF 제거</h4></div>
             <ul>
-              <li>Rate Limit·인기 검색어는 Redis 장애 시 통과하도록 되어 있는데 <strong>캐시만 예외</strong>인 것을 발견. 조회 성능을 위해 붙인 캐시가 서비스 필수 의존이 되어 있던 상태.</li>
+              <li>테스트 중 인기 검색어 응답이 캐시를 타지 않는 것을 확인하고 원인을 추적해, Rate Limit·인기 검색어는 Redis 장애 시 통과하는데 <strong>캐시 계층만 예외</strong>인 것을 발견. 조회 성능을 위해 붙인 캐시가 서비스 필수 의존이 되어 있던 상태.</li>
               <li>Redis 를 실제로 중단시켜 상품 목록·상세가 <span class="fig">500</span> 을 반환하는 것을 재현.</li>
               <li>캐시 계층을 <strong>fail-open</strong> 으로 전환해 캐시 오류 시 DB 직접 조회로 넘어가도록 변경, 장애 중에도 <span class="fig">200</span> 응답 유지.</li>
             </ul>
@@ -745,11 +751,11 @@ code {
           </div>
 
           <div class="entry">
-            <div class="entry-head"><h4>부하테스트로 한계점 규명 및 성능 가설 기각</h4></div>
+            <div class="entry-head"><h4>부하테스트로 성능 한계 측정</h4></div>
             <ul>
               <li>k6 단계별 부하로 처리량이 정체하는 지점을 병목 신호로 잡고, 이진 탐색으로 한계 동시 사용자 수를 확정 <span class="fig">(VU 2970 실패율 0%)</span>.</li>
-              <li>병목이 DB 커넥션 풀이 아니라 애플리케이션 서버의 커넥션 수용 한계임을 특정.</li>
-              <li>락 방식을 바꾸면 개선될 것이라는 가설은 측정값에 차이가 없어 기각하고, 커넥션 풀 크기와 비밀번호 해싱 비용으로 병목을 재진단.</li>
+              <li>실패율이 뛰는 지점에서 <strong>p95 가 오히려 낮아진 것</strong>을 근거로, 병목이 DB 커넥션 풀이 아니라 <strong>Tomcat 의 연결 수용 한계</strong>임을 판단.</li>
+              <li>락 방식을 바꾸면 개선될 것이라는 가설은 측정값에 차이가 없어 기각하고, <strong>DB 커넥션 풀 기본값(10)</strong> 과 비밀번호 해싱(BCrypt)의 CPU 비용으로 병목을 재진단.</li>
             </ul>
           </div>
 
@@ -792,7 +798,7 @@ code {
             <ul>
               <li><code>Order</code>·<code>OrderItem</code> 엔티티 매핑과 제약조건을 설계하고 Repository 부터 Controller 까지 전 계층 구현.</li>
               <li>주문 생성 시의 재고 차감 책임을 상품 도메인으로 분리.</li>
-              <li>PR 당 <span class="fig">10건 이상</span>의 리뷰를 주고받으며 응답 형식과 DTO 어노테이션 스타일을 팀 컨벤션으로 통일.</li>
+              <li>코드 리뷰를 주고받으며 응답 형식과 DTO 어노테이션 스타일을 팀 컨벤션으로 통일.</li>
             </ul>
           </div>
 
