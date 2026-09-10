@@ -958,7 +958,7 @@ assertNull(intruderQueue.poll(<span class="k">2</span>, TimeUnit.SECONDS));</pre
 
     <div class="sub">
       <p class="sub-label">Troubleshooting 03</p>
-      <h3>가설이 틀린 것을 측정으로 확인한 부하테스트</h3>
+      <h3>부하테스트로 성능 한계 측정</h3>
       <p class="lede">동시 참여가 몰릴 때 어디서 먼저 무너지는지 알지 못한 상태였습니다. 처리량이 정체하는 지점을 병목 신호로 보고 한계를 실측했고, <strong>먼저 세운 가설은 측정값이 뒤집었습니다.</strong></p>
 
       <div class="tshoot">
@@ -1035,7 +1035,7 @@ assertNull(intruderQueue.poll(<span class="k">2</span>, TimeUnit.SECONDS));</pre
     <div class="sub">
       <p class="sub-label">Architecture</p>
       <h3>고도화 영역 분담과 상품 조회 경로</h3>
-      <p class="lede">클라이언트가 REST API 또는 WebSocket 으로 요청을 전송하면 서버가 인증을 검증하고 도메인 로직을 처리합니다. <strong>상품 조회는 제가 설계한 복합 인덱스와 FULLTEXT 인덱스를 경유합니다.</strong> 인기 데이터의 Redis 캐싱은 다른 팀원의 고도화 영역입니다.</p>
+      <p class="lede">클라이언트가 REST API 또는 WebSocket 으로 요청을 전송하면 서버가 인증을 검증하고 도메인 로직을 처리합니다. <strong>상품 조회는 제가 설계한 복합 인덱스와 FULLTEXT 인덱스를 경유합니다.</strong></p>
 
       <figure>
         <svg viewBox="0 0 900 366" role="img" aria-label="일취월장 고도화 영역 분담도. 다섯 명이 각각 상품 조회·검색 인덱스, 실시간 통신 인가, 관리자 주문 검색, 재고 동시성 제어, 인기 데이터 캐싱을 담당했다. 민병준이 설계한 인덱스가 MySQL 조회 경로로 이어진다.">
