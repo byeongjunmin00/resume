@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>민병준 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap">
+
+<style>
+:root {
+  --bg:        #FBFBFD;
+  --panel:     #FFFFFF;
+  --inset:     #F1F1F5;
+  --card-bd:   #E6E6EB;
+  --ink:       #1D1D1F;
+  --ink-soft:  #424245;
+  --ink-muted: #6E6E73;
+  --hairline:  #D2D2D7;
+  --hairline-soft: #E4E4E9;
+  --link:      #0066CC;
+
+  --draft-bg:   #FFF8E8;
+  --draft-line: #DDBE73;
+  --draft-ink:  #7A5C0E;
+
+  --code-bg:   #F6F6F9;
+  --code-ink:  #2B2B31;
+  --code-cmt:  #7C7C88;
+  --code-key:  #9B2393;
+  --code-str:  #1B7A38;
+
+  --accent:    #0066CC;
+  --accent-bg: rgba(0, 102, 204, 0.09);
+  --a-gong:    #C2570F;
+  --a-gong-bg: rgba(194, 87, 15, 0.10);
+  --a-ilchwi:  #1D5FBF;
+  --a-ilchwi-bg: rgba(29, 95, 191, 0.10);
+  --sv-data:   #0C8296;
+  --sv-ext:    #8A3BB8;
+
+  --f-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+            "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard",
+            "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --f-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  --measure: 42em;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #000000;
+    --panel:     #141416;
+    --inset:     #222226;
+    --card-bd:   #26262A;
+    --ink:       #F5F5F7;
+    --ink-soft:  #D6D6DB;
+    --ink-muted: #86868B;
+    --hairline:  #3A3A3F;
+    --hairline-soft: #2A2A2E;
+    --link:      #2997FF;
+
+    --draft-bg:   rgba(214, 168, 58, 0.10);
+    --draft-line: #6E5A24;
+    --draft-ink:  #D8B45E;
+
+    --code-bg:   #1A1A1E;
+    --code-ink:  #DDDDE4;
+    --code-cmt:  #7E7E8C;
+    --code-key:  #E88FE0;
+    --code-str:  #7DD695;
+
+    --accent:    #2997FF;
+    --accent-bg: rgba(41, 151, 255, 0.14);
+    --a-gong:    #FF9F5A;
+    --a-gong-bg: rgba(255, 159, 90, 0.13);
+    --a-ilchwi:  #6BAEFF;
+    --a-ilchwi-bg: rgba(107, 174, 255, 0.13);
+    --sv-data:   #68D2E2;
+    --sv-ext:    #D69BF0;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:        #000000;
+  --panel:     #141416;
+  --inset:     #222226;
+  --card-bd:   #26262A;
+  --ink:       #F5F5F7;
+  --ink-soft:  #D6D6DB;
+  --ink-muted: #86868B;
+  --hairline:  #3A3A3F;
+  --hairline-soft: #2A2A2E;
+  --link:      #2997FF;
+
+  --draft-bg:   rgba(214, 168, 58, 0.10);
+  --draft-line: #6E5A24;
+  --draft-ink:  #D8B45E;
+
+  --code-bg:   #1A1A1E;
+  --code-ink:  #DDDDE4;
+  --code-cmt:  #7E7E8C;
+  --code-key:  #E88FE0;
+  --code-str:  #7DD695;
+
+  --accent:    #2997FF;
+  --accent-bg: rgba(41, 151, 255, 0.14);
+  --a-gong:    #FF9F5A;
+  --a-gong-bg: rgba(255, 159, 90, 0.13);
+  --a-ilchwi:  #6BAEFF;
+  --a-ilchwi-bg: rgba(107, 174, 255, 0.13);
+  --sv-data:   #68D2E2;
+  --sv-ext:    #D69BF0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: 16px;
+  line-height: 1.62;
+  letter-spacing: -0.011em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+
+.sheet {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(44px, 7vw, 76px) clamp(20px, 5vw, 44px) 72px;
+}
+
+/* ── 표지 ────────────────────────────────────────── */
+
+.cover { padding-bottom: 30px; border-bottom: 1px solid var(--hairline); }
+
+.kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+}
+
+.cover h1 {
+  font-size: clamp(40px, 6.4vw, 56px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  margin: 0;
+}
+
+.cover .thesis {
+  font-size: clamp(19px, 2.4vw, 23px);
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: -0.019em;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: var(--measure);
+}
+
+.contact {
+  margin: 26px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 38px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cx { display: flex; flex-direction: column; gap: 1px; }
+
+.cx-key {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.cx-val { font-size: 15px; color: var(--ink-soft); }
+a.cx-val { color: var(--link); }
+
+/* ── 섹션 ────────────────────────────────────────── */
+
+.section { padding-top: clamp(44px, 6vw, 62px); }
+
+.section > h2 {
+  font-size: clamp(22px, 3vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.023em;
+  line-height: 1.22;
+  margin: 0 0 20px;
+}
+
+.lede {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: var(--measure);
+}
+
+.lede + .lede { margin-top: 14px; }
+.lede strong { color: var(--ink); font-weight: 600; }
+
+/* ── 기술 칩 ─────────────────────────────────────── */
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+
+.chip {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  background: var(--inset);
+  border-radius: 8px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+/* ── 역량 카드 ───────────────────────────────────── */
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.pcard {
+  background: var(--panel);
+  border: 1px solid var(--card-bd);
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pcard h3 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  margin: 0;
+}
+
+.pcard p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+
+/* ── 프로젝트 ────────────────────────────────────── */
+
+.project { padding-top: clamp(52px, 7vw, 76px); }
+
+.project-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--proj);
+  background: var(--proj-bg);
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}
+
+.project h2 {
+  font-size: clamp(30px, 4.6vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.12;
+  margin: 0 0 6px;
+}
+
+.project .subtitle {
+  font-size: clamp(17px, 2.2vw, 20px);
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: -0.018em;
+  margin: 0 0 20px;
+}
+
+.project .plinks { display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 22px; font-size: 14.5px; }
+
+.meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--hairline-soft);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.meta div { display: flex; flex-direction: column; gap: 3px; }
+
+.meta dt {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.meta dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 하위 섹션 ───────────────────────────────────── */
+
+.sub { padding-top: 40px; }
+
+.sub-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--proj);
+  margin: 0 0 10px;
+}
+
+.sub h3 {
+  font-size: clamp(20px, 2.7vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.28;
+  margin: 0 0 12px;
+}
+
+/* ── 다이어그램 ──────────────────────────────────── */
+
+figure {
+  margin: 24px 0 0;
+  background: var(--panel);
+  border: 1px solid var(--card-bd);
+  border-radius: 14px;
+  padding: 22px 20px 16px;
+  overflow-x: auto;
+}
+
+figure svg { display: block; width: 100%; max-width: 100%; height: auto; color: var(--ink); }
+
+figcaption {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.sv-layer  { fill: var(--inset); }
+.sv-box    { fill: var(--panel); stroke: var(--card-bd); stroke-width: 1; }
+.sv-plain  { fill: var(--panel); stroke: none; }
+.sv-hi     { fill: var(--proj-bg); stroke: var(--proj); stroke-width: 1.3; }
+.sv-cap    { fill: var(--panel); stroke: var(--card-bd); stroke-width: 1; }
+.sv-capk   { fill: var(--panel); stroke: var(--proj); stroke-width: 1.2; }
+
+.sv-t  { fill: var(--ink); font-family: var(--f-sans); font-size: 13px; font-weight: 600; letter-spacing: -0.012em; }
+.sv-s  { fill: var(--ink-muted); font-family: var(--f-sans); font-size: 10.5px; font-weight: 400; letter-spacing: -0.004em; }
+.sv-a  { fill: var(--proj); font-family: var(--f-sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; }
+.sv-at { fill: var(--proj); font-family: var(--f-sans); font-size: 13px; font-weight: 600; letter-spacing: -0.012em; }
+
+.sv-line { stroke: var(--ink-muted); stroke-width: 1.3; fill: none; opacity: 0.65; }
+.sv-mute { stroke: var(--ink-muted); stroke-width: 1.3; fill: none; opacity: 0.35; stroke-dasharray: 4 4; }
+.sv-dash { stroke: var(--proj); stroke-width: 1.8; fill: none; stroke-dasharray: 6 4; }
+.sv-bar  { fill: var(--proj); }
+.d-data  { fill: var(--sv-data); }
+.d-ext   { fill: var(--sv-ext); }
+
+/* ── 트러블슈팅 ──────────────────────────────────── */
+
+.tshoot { margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+
+@media (min-width: 860px) {
+  .tshoot { grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: 26px; align-items: start; }
+}
+
+.steps { display: flex; flex-direction: column; gap: 0; }
+
+.step {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 0 14px;
+  padding: 16px 0;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+.step:first-child { border-top: 0; padding-top: 0; }
+
+.step-n {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--proj);
+  padding-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.step-k {
+  grid-column: 2;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+
+.step p { grid-column: 2; margin: 0; font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); }
+.step p strong { color: var(--ink); font-weight: 600; }
+
+.snip {
+  background: var(--code-bg);
+  border: 1px solid var(--card-bd);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.snip-h {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--card-bd);
+}
+
+.snip pre {
+  margin: 0;
+  padding: 14px;
+  overflow-x: auto;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  line-height: 1.68;
+  color: var(--code-ink);
+  letter-spacing: 0;
+  word-break: normal;
+  white-space: pre;
+}
+
+code {
+  font-family: var(--f-mono);
+  font-size: 0.875em;
+  letter-spacing: 0;
+  word-break: break-all;
+  color: var(--ink);
+}
+
+.c { color: var(--code-cmt); }
+.k { color: var(--code-key); }
+.s { color: var(--code-str); }
+
+.measure {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 0;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.measure caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  padding-bottom: 7px;
+}
+
+.measure th,
+.measure td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--hairline-soft);
+  text-align: right;
+}
+
+.measure th:first-child,
+.measure td:first-child { text-align: left; }
+
+.measure thead th {
+  font-weight: 600;
+  color: var(--ink-muted);
+  font-size: 11.5px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.measure tbody tr.brk td {
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--inset);
+}
+
+.measure-wrap { overflow-x: auto; }
+
+.fig-num {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── 배운 점 ─────────────────────────────────────── */
+
+.learn { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px 22px; margin-top: 20px; }
+
+.learn div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 14px;
+  border-top: 2px solid var(--proj);
+}
+
+.learn dt {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--proj);
+}
+
+.learn dd { margin: 0; font-size: 15px; line-height: 1.62; color: var(--ink-soft); }
+
+/* ── 초안 표시 ───────────────────────────────────── */
+
+.notice, .draft {
+  border: 1px dashed var(--draft-line);
+  background: var(--draft-bg);
+  border-radius: 10px;
+  padding: 14px 17px;
+  max-width: var(--measure);
+}
+
+.notice { margin: 26px 0 0; font-size: 14.5px; line-height: 1.62; color: var(--draft-ink); }
+.notice p { margin: 0; }
+.notice p + p { margin-top: 7px; }
+.notice strong { font-weight: 600; }
+
+.draft { margin: 18px 0 0; max-width: none; }
+
+.draft-tag {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--draft-ink);
+}
+
+.mark { font-family: var(--f-mono); font-size: 0.94em; letter-spacing: 0; }
+.draft-body { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+.draft-body + .draft-body { margin-top: 6px; }
+
+/* ── 마무리 ──────────────────────────────────────── */
+
+.closing {
+  margin-top: clamp(52px, 7vw, 74px);
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+}
+
+.closing p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); max-width: var(--measure); }
+.closing p + p { margin-top: 10px; }
+
+.foot {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.themetoggle {
+  font: inherit;
+  font-size: 13px;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: 980px;
+  color: var(--ink-muted);
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.themetoggle:hover { color: var(--link); border-color: var(--link); }
+
+@media print {
+  @page { size: A4; margin: 13mm 14mm; }
+  :root, :root[data-theme="dark"], :root[data-theme="light"] {
+    --bg: #FFFFFF; --panel: #FFFFFF; --inset: #F2F2F5; --card-bd: #C9C9D0;
+    --ink: #000000; --ink-soft: #26262A; --ink-muted: #4A4A50;
+    --hairline: #B4B4BA; --hairline-soft: #D6D6DC; --link: #0F4C9E;
+    --code-bg: #F7F7FA; --code-ink: #1A1A20; --code-cmt: #6A6A76;
+    --code-key: #7A1C73; --code-str: #14612C;
+    --a-gong: #9A440B; --a-gong-bg: rgba(154, 68, 11, 0.10);
+    --a-ilchwi: #164A96; --a-ilchwi-bg: rgba(22, 74, 150, 0.10);
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10pt; line-height: 1.5; }
+  .sheet { max-width: none; padding: 0; }
+  .cover h1 { font-size: 26pt; }
+  .project h2 { font-size: 20pt; }
+  .section > h2, .sub h3 { font-size: 13pt; }
+  .tshoot { grid-template-columns: minmax(0, 1fr); gap: 12pt; }
+  .snip { margin-top: 4pt; }
+  .snip-h { padding: 6pt 10pt; font-size: 8pt; }
+  .snip pre {
+    font-size: 7.9pt;
+    line-height: 1.55;
+    padding: 10pt;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow: visible;
+  }
+  figure { overflow: visible; padding: 14pt 12pt 10pt; }
+  figcaption { font-size: 8.5pt; margin-top: 10pt; padding-top: 8pt; }
+  .steps { gap: 0; }
+  .step { padding: 9pt 0; }
+  .draft { margin-top: 12pt; padding: 10pt 12pt; }
+  .draft-tag { font-size: 9pt; }
+  .draft-body { font-size: 9pt; line-height: 1.5; }
+  .grid2 { gap: 10pt; }
+  .pcard { padding: 12pt 14pt; }
+  .pcard h3 { font-size: 11pt; }
+  .pcard p { font-size: 9.5pt; }
+  .learn { gap: 10pt 16pt; }
+  .learn dd { font-size: 9.5pt; }
+  .chips { gap: 4pt; margin-top: 12pt; }
+  .chip { font-size: 8.5pt; padding: 3pt 8pt; }
+  .themetoggle, .foot { display: none; }
+  .pcard, .step, .snip, figure, .draft, .notice, .learn div, .closing { break-inside: avoid; }
+  .sub h3, .project h2, .sub-label, .meta { break-after: avoid; }
+  .sub-label + h3 { break-before: avoid; }
+  .project { break-before: page; padding-top: 0; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="cover">
+    <p class="kicker">Backend Portfolio</p>
+    <h1>민병준</h1>
+    <p class="contact">
+      <span class="cx"><span class="cx-key">Phone</span><span class="cx-val">010-9346-4590</span></span>
+      <span class="cx"><span class="cx-key">Email</span><a class="cx-val" href="mailto:byeongjunmin00@gmail.com">byeongjunmin00@gmail.com</a></span>
+      <span class="cx"><span class="cx-key">Github</span><a class="cx-val" href="https://github.com/byeongjunmin00" target="_blank" rel="noopener">github.com/byeongjunmin00</a></span>
+    </p>  </header>
+
+  <section class="section">
+    <h2>기술</h2>
+
+    <div class="chips">
+      <span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">Spring Security</span><span class="chip">JPA / QueryDSL</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">WebSocket · STOMP</span><span class="chip">Spring AI</span><span class="chip">PortOne</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>역량</h2>
+    <div class="grid2">
+      <article class="pcard">
+        <h3>장애 격리와 가용성 설계</h3>
+        <p>캐시나 외부 API 같은 부가 의존성의 장애가 핵심 기능으로 전파되지 않도록 경계를 나누고, 폴백 경로를 설정 계층에 둡니다.</p>
+      </article>
+      <article class="pcard">
+        <h3>조회 성능 진단과 인덱스 설계</h3>
+        <p>실행 계획으로 병목을 특정하고 조건 조합에 맞는 인덱스를 설계하며, 도구가 지원하지 않는 인덱스는 기동 시점에 멱등하게 생성해 우회합니다.</p>
+      </article>
+      <article class="pcard">
+        <h3>운영 환경 장애 진단</h3>
+        <p>컨테이너의 실제 할당량과 런타임 인식값을 대조하고, 스레드 덤프와 메모리 추이를 근거로 원인을 좁힙니다.</p>
+      </article>
+      <article class="pcard">
+        <h3>회귀를 잡는 테스트 설계</h3>
+        <p>실제 요청 경로로 검증하고, 검증 대상 로직을 제거했을 때 테스트가 실패하는지까지 확인합니다.</p>
+      </article>
+      <article class="pcard">
+        <h3>실시간 통신과 채널 인가</h3>
+        <p>STOMP 기반 브로드캐스트와 1:1 메시징을 구현하고, HTTP 인가와 분리된 채널 단위 권한 검사를 설계합니다.</p>
+      </article>
+      <article class="pcard">
+        <h3>외부 서비스 연동</h3>
+        <p>결제를 연동하고 그 결과를 서버가 재조회해 확정하며, LLM 연동은 실패와 지연을 유형별로 다뤄 안내가 끊기지 않게 합니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="project" style="--proj: var(--a-gong); --proj-bg: var(--a-gong-bg);">
+    <p class="project-mark">Project 01</p>
+    <h2>GONG9RI</h2>
+    <p class="subtitle">참여자가 늘수록 1인당 가격이 계단식으로 내려가는 공동구매 커머스</p>
+    <p class="plinks">
+      <a href="https://github.com/byeongjunmin00/GONG9RI" target="_blank" rel="noopener">Github</a>
+      <a href="https://gong9ri.up.railway.app" target="_blank" rel="noopener">서비스 바로가기</a>
+    </p>
+
+    <p class="lede">결제, 실시간 상담, AI 상담 챗봇을 하나의 서비스로 통합했습니다. <strong>제거하면 실패하는 테스트</strong>와 외부 의존성 장애 격리를 설계 기준으로 삼았습니다.</p>
+
+    <dl class="meta">
+      <div><dt>기간</dt><dd>2026.07 – 2026.08 (5주)</dd></div>
+      <div><dt>팀</dt><dd>2인</dd></div>
+      <div><dt>역할</dt><dd>공동구매 도메인 · 실시간 상담 · 결제 생성·조회·환불 · 배포 인프라</dd></div>
+    </dl>
+    <div class="sub">
+      <p class="sub-label">Architecture</p>
+      <h3>단일 인스턴스 위에 올린 결제·실시간·AI 통합 구조</h3>
+      <p class="lede">클라이언트 요청은 REST API 또는 WebSocket 으로 유입되고, 서버는 MySQL 과 Redis 에서 데이터를 조회하거나 적재한 뒤 필요에 따라 결제·인증·챗봇 같은 외부 서비스를 호출해 응답을 구성합니다. <strong>Redis 에 장애가 발생해도 조회는 DB 로 직접 폴백합니다.</strong></p>
+
+      <figure>
+        <svg viewBox="0 0 900 476" role="img" aria-label="GONG9RI 시스템 구성도. 브라우저 요청이 Railway 위의 Spring Boot 단일 인스턴스로 유입되고, MySQL과 Redis를 거쳐 외부 서비스를 호출한다. Redis 장애 시 조회는 MySQL로 직접 폴백한다.">
+          <defs>
+            <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor" opacity="0.65"/>
+            </marker>
+            <marker id="ar1k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--proj)"/>
+            </marker>
+          </defs>
+
+          <rect class="sv-box" x="370" y="10" width="160" height="48" rx="10"/>
+          <text class="sv-t" x="450" y="32" text-anchor="middle">브라우저</text>
+          <text class="sv-s" x="450" y="47" text-anchor="middle">HTML · CSS · JavaScript</text>
+
+          <line class="sv-line" x1="450" y1="58" x2="450" y2="92" marker-end="url(#ar1)"/>
+          <text class="sv-s" x="460" y="79">HTTPS · WebSocket</text>
+
+          <rect class="sv-layer" x="14" y="98" width="872" height="280" rx="14"/>
+          <rect class="sv-cap" x="30" y="110" width="128" height="21" rx="10.5"/>
+          <text class="sv-s" x="94" y="124.5" text-anchor="middle">RAILWAY 배포 환경</text>
+
+          <rect class="sv-hi" x="30" y="140" width="840" height="110" rx="10"/>
+          <text class="sv-a" x="44" y="162">SPRING BOOT · 단일 인스턴스 · JAVA 17</text>
+
+          <rect class="sv-plain" x="42" y="170" width="198" height="68" rx="9"/>
+          <text class="sv-t" x="56" y="192">REST API</text>
+          <text class="sv-s" x="56" y="209">상품 · 공구방 · 결제</text>
+          <text class="sv-s" x="56" y="224">환불 · 관리자</text>
+
+          <rect class="sv-plain" x="248" y="170" width="198" height="68" rx="9"/>
+          <text class="sv-t" x="262" y="192">WebSocket · STOMP</text>
+          <text class="sv-s" x="262" y="209">공구방 인원 브로드캐스트</text>
+          <text class="sv-s" x="262" y="224">1:1 상담 · 인메모리 브로커</text>
+
+          <rect class="sv-plain" x="454" y="170" width="198" height="68" rx="9"/>
+          <text class="sv-t" x="468" y="192">스케줄러 · 이벤트</text>
+          <text class="sv-s" x="468" y="209">공구 마감 처리</text>
+          <text class="sv-s" x="468" y="224">알림 비동기 발행</text>
+
+          <rect class="sv-plain" x="660" y="170" width="198" height="68" rx="9"/>
+          <text class="sv-t" x="674" y="192">정적 리소스</text>
+          <text class="sv-s" x="674" y="209">프론트엔드 서빙</text>
+
+          <line class="sv-line" x1="450" y1="250" x2="450" y2="262" marker-end="url(#ar1)"/>
+
+          <rect class="sv-box" x="30" y="266" width="273" height="62" rx="10"/>
+          <circle class="d-data" cx="48" cy="288" r="4"/>
+          <text class="sv-t" x="62" y="292">MySQL</text>
+          <text class="sv-s" x="62" y="311">주문 · 공구방 · 상품 · 복합 인덱스</text>
+
+          <rect class="sv-box" x="313" y="266" width="273" height="62" rx="10"/>
+          <circle class="d-data" cx="331" cy="288" r="4"/>
+          <text class="sv-t" x="345" y="292">Redis</text>
+          <text class="sv-s" x="345" y="311">조회 캐시 · Rate Limit</text>
+
+          <rect class="sv-box" x="596" y="266" width="273" height="62" rx="10"/>
+          <circle class="d-data" cx="614" cy="288" r="4"/>
+          <text class="sv-t" x="628" y="292">볼륨 스토리지</text>
+          <text class="sv-s" x="628" y="311">상품 · 프로필 이미지</text>
+
+          <path class="sv-dash" d="M 449 328 C 449 352 166 352 166 332" marker-end="url(#ar1k)"/>
+          <rect class="sv-capk" x="196" y="345" width="222" height="22" rx="11"/>
+          <text class="sv-a" x="307" y="360" text-anchor="middle">장애 시 DB 직접 조회 · fail-open</text>
+
+          <line class="sv-line" x1="450" y1="378" x2="450" y2="402" marker-end="url(#ar1)"/>
+
+          <rect class="sv-box" x="14" y="408" width="210" height="58" rx="10"/>
+          <circle class="d-ext" cx="32" cy="429" r="4"/>
+          <text class="sv-t" x="46" y="433">PortOne</text>
+          <text class="sv-s" x="46" y="451">결제 · 환불 · 웹훅 서명 검증</text>
+
+          <rect class="sv-box" x="234" y="408" width="210" height="58" rx="10"/>
+          <circle class="d-ext" cx="252" cy="429" r="4"/>
+          <text class="sv-t" x="266" y="433">Kakao OAuth</text>
+          <text class="sv-s" x="266" y="451">소셜 로그인 · 공유</text>
+
+          <rect class="sv-box" x="454" y="408" width="210" height="58" rx="10"/>
+          <circle class="d-ext" cx="472" cy="429" r="4"/>
+          <text class="sv-t" x="486" y="433">SendGrid</text>
+          <text class="sv-s" x="486" y="451">이메일 인증 · 비밀번호 재설정</text>
+
+          <rect class="sv-box" x="674" y="408" width="210" height="58" rx="10"/>
+          <circle class="d-ext" cx="692" cy="429" r="4"/>
+          <text class="sv-t" x="706" y="433">OpenAI · Spring AI</text>
+          <text class="sv-s" x="706" y="451">챗봇 · 상품 등록 도우미</text>
+        </svg>
+        <figcaption>결제 확정은 서버가 결제사 API 를 재조회한 결과로만 이뤄집니다. 캐시가 응답하지 않으면 조회는 점선 경로로 DB 에 직접 도달하므로, Redis 는 가용성의 단일 장애점이 되지 않습니다.</figcaption>
+      </figure>    </div>
+
+    <div class="sub">
+      <p class="sub-label">Troubleshooting 01</p>
+      <h3>인가를 검증하지 못하던 상담 채널 보안 테스트</h3>
+      <p class="lede">상담 채널은 해당 방에 참여하지 않은 사용자에게 대화가 노출되지 않아야 합니다. <strong>인가 로직은 구현되어 있었지만, 그것을 검증한다고 적힌 테스트가 실제로는 아무것도 검증하지 못하고 있었습니다.</strong></p>
+
+      <figure>
+        <svg viewBox="0 0 900 300" role="img" aria-label="보안 테스트의 두 진입 경로 비교. 서비스 메서드를 직접 호출하는 경로는 브로커를 경유하지 않아 인가 판정이 일어나지 않고, 인가를 제거해도 결과가 같아 테스트가 항상 통과한다. STOMP로 발행하는 경로는 브로커가 인가를 판정하므로, 인가를 제거하면 비참여자 세션까지 메시지가 도달해 테스트가 실패한다.">
+          <defs>
+            <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor" opacity="0.45"/>
+            </marker>
+            <marker id="ar2k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--proj)"/>
+            </marker>
+          </defs>
+
+          <rect class="sv-box" x="16" y="118" width="150" height="64" rx="10"/>
+          <text class="sv-t" x="91" y="145" text-anchor="middle">상담 보안 테스트</text>
+          <text class="sv-s" x="91" y="163" text-anchor="middle">같은 기능을 검증</text>
+
+          <path class="sv-mute" d="M 166 150 C 196 150 196 78 220 78" marker-end="url(#ar2)"/>
+          <path class="sv-dash" d="M 166 150 C 196 150 196 248 220 248" marker-end="url(#ar2k)"/>
+
+          <rect class="sv-cap" x="224" y="22" width="182" height="21" rx="10.5"/>
+          <text class="sv-s" x="315" y="36.5" text-anchor="middle">경로 A · 서비스 메서드 직접 호출</text>
+
+          <rect class="sv-box" x="224" y="50" width="206" height="56" rx="9"/>
+          <text class="sv-t" x="240" y="74">SupportChatService</text>
+          <text class="sv-s" x="240" y="92">인가 로직은 이 안에 있음</text>
+
+          <line class="sv-mute" x1="430" y1="78" x2="444" y2="78" marker-end="url(#ar2)"/>
+
+          <rect class="sv-box" x="448" y="50" width="176" height="56" rx="9"/>
+          <text class="sv-t" x="464" y="74">브로커 미경유</text>
+          <text class="sv-s" x="464" y="92">브로드캐스트가 발생하지 않음</text>
+
+          <line class="sv-mute" x1="624" y1="78" x2="638" y2="78" marker-end="url(#ar2)"/>
+
+          <rect class="sv-layer" x="642" y="50" width="242" height="56" rx="9"/>
+          <text class="sv-t" x="658" y="74">항상 통과</text>
+          <text class="sv-s" x="658" y="92">인가를 제거해도 결과가 같음</text>
+
+          <rect class="sv-capk" x="224" y="196" width="150" height="21" rx="10.5"/>
+          <text class="sv-a" x="299" y="210.5" text-anchor="middle">경로 B · STOMP 발행</text>
+
+          <rect class="sv-hi" x="224" y="222" width="206" height="56" rx="9"/>
+          <text class="sv-at" x="240" y="246">브로커 인가 판정</text>
+          <text class="sv-s" x="240" y="264">채널 구독·발행 권한 검사</text>
+
+          <line class="sv-line" x1="430" y1="250" x2="444" y2="250" marker-end="url(#ar2k)" stroke="var(--proj)" opacity="1"/>
+
+          <rect class="sv-box" x="448" y="222" width="176" height="56" rx="9"/>
+          <text class="sv-t" x="464" y="246">브로드캐스트</text>
+          <text class="sv-s" x="464" y="264">판정을 통과한 세션에만</text>
+
+          <line class="sv-line" x1="624" y1="250" x2="638" y2="250" marker-end="url(#ar2k)" stroke="var(--proj)" opacity="1"/>
+
+          <rect class="sv-hi" x="642" y="222" width="242" height="56" rx="9"/>
+          <text class="sv-at" x="658" y="246">제거하면 실패</text>
+          <text class="sv-s" x="658" y="264">비참여자 세션까지 메시지가 도달</text>
+        </svg>
+        <figcaption>두 경로는 같은 기능을 검증하는 것처럼 보이지만, 인가 판정 지점을 경유하는지가 다릅니다. 위쪽 경로는 브로드캐스트가 발생하지 않으므로 인가를 제거해도 결과가 바뀌지 않고, 아래쪽 경로에서만 비참여자 도달이라는 실패가 관측됩니다.</figcaption>
+      </figure>
+
+      <div class="tshoot">
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">01</span>
+            <span class="step-k">문제</span>
+            <p>보안 테스트가 서비스 메서드를 직접 호출하고 있었습니다. 이 경로는 브로커를 경유하지 않아 브로드캐스트 자체가 발생하지 않고, 따라서 <strong>인가 로직을 제거해도 결과가 동일해 테스트가 항상 통과</strong>했습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">02</span>
+            <span class="step-k">해결</span>
+            <p>테스트가 실제 STOMP 발행 경로를 경유하도록 전환했습니다. 이 경로에서는 브로커가 채널 구독·발행 인가를 판정하므로, <strong>인가를 제거하면 비참여자 세션까지 메시지가 도달해 테스트가 실패</strong>합니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">03</span>
+            <span class="step-k">결과</span>
+            <p>구독·발행·비로그인 세 경로의 인가가 실제로 검증되게 됐습니다. 이후 보안 성격의 테스트는 <strong>검증 대상 로직을 제거했을 때 실패하는지 확인한 뒤에</strong> 신뢰합니다.</p>
+          </div>
+        </div>
+
+        <div class="snip">
+          <div class="snip-h">SupportChatSecurityTest.java</div>
+<pre><span class="c">// 처음에는 서비스 메서드를 직접 호출했다.
+// 브로커를 경유하지 않아 인가를 제거해도 결과가 같았다.
+// supportChatService.send(sender, roomId, "…");
+
+// 실제 STOMP 발행 경로로 바꾼 뒤에야
+// 인가를 제거하면 아래 단언이 깨진다.</span>
+stompSession.send(
+    <span class="s">"/app/support/"</span> + roomId + <span class="s">"/send"</span>,
+    <span class="k">new</span> SupportMessageSendRequest(<span class="s">"타인의 상담 메시지"</span>));
+
+<span class="c">// 방에 참여하지 않은 세션에는 아무것도 도달하지 않아야 한다</span>
+assertNull(intruderQueue.poll(<span class="k">2</span>, TimeUnit.SECONDS));</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-label">Troubleshooting 02</p>
+      <h3>힙이 아니라 스레드가 원인이었던 컨테이너 OOM</h3>
+      <p class="lede">배포한 서버가 주기적으로 종료됐습니다. 최대 힙 크기(<code>-Xmx</code>)를 올려 해결했다고 판단했으나 <span class="fig-num">47분</span> 만에 재발했습니다.</p>
+
+      <div class="tshoot">
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">01</span>
+            <span class="step-k">문제</span>
+            <p>컨테이너가 프로세스를 종료시킨 기준은 힙이 아니라 <strong>프로세스 전체 메모리(RSS)</strong> 였습니다. JVM 이 컨테이너의 CPU 할당량을 호스트 물리 코어 수인 <strong>48</strong>로 오인식했고, 코어 수를 기준으로 산정되는 스레드풀과 GC 스레드가 그만큼 늘어났습니다. <strong>스레드는 힙이 아니라 네이티브 영역에 스택을 잡으므로</strong>, 최대 힙 크기를 올린 조치는 힙과 네이티브의 합이 한도에 더 빨리 도달하게 만들었습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">02</span>
+            <span class="step-k">해결</span>
+            <p>진단 도구가 없는 런타임 이미지였던 탓에 이미지를 임시로 교체해 jstack 스레드 덤프를 확보하고, 스레드를 이름별로 집계해 메시지 브로커 스레드가 과다 생성된 것을 특정했습니다. <code>-XX:ActiveProcessorCount</code> 를 실제 할당량으로 고정해 <strong>코어 수에 연동되는 모든 풀을 한 번에 잡고</strong>, 브로커 스레드풀 크기는 코어 수와 무관하게 별도로 지정했습니다. 해당 스레드는 <span class="fig-num">48개 → 2개</span>로 줄었습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">03</span>
+            <span class="step-k">결과</span>
+            <p>운영 환경에서 재측정해 <span class="fig-num">RSS 610MB / 컨테이너 한도 954MB</span> 로 안정 가동하는 것을 확인했습니다. 예측 불가능한 서버 재시작이 사라졌고, 이후 OOM 은 재발하지 않았습니다.</p>
+          </div>
+        </div>
+
+        <div class="snip">
+          <div class="snip-h">WebSocketConfig.java · 기동 옵션</div>
+<pre><span class="c">// 브로커 스레드풀 크기를 코어 수 기반 산정에 맡기지 않고 명시적으로 고정</span>
+<span class="k">@Override</span>
+<span class="k">public void</span> configureMessageBroker(MessageBrokerRegistry registry) {
+    ThreadPoolTaskScheduler scheduler = <span class="k">new</span> ThreadPoolTaskScheduler();
+    scheduler.setPoolSize(<span class="k">2</span>);   <span class="c">// JVM 이 48로 오인식하던 코어 수를 대체</span>
+    scheduler.initialize();
+
+    registry.enableSimpleBroker(<span class="s">"/topic"</span>).setTaskScheduler(scheduler);
+    registry.setApplicationDestinationPrefixes(<span class="s">"/app"</span>);
+}
+
+<span class="c"># 기동 옵션 — 컨테이너 CPU 할당량을 JVM 에 명시</span>
+-XX:ActiveProcessorCount=<span class="k">2</span> -Xmx512m</pre>
+        </div>
+      </div>    </div>
+
+    <div class="sub">
+      <p class="sub-label">Troubleshooting 03</p>
+      <h3>가설이 틀린 것을 측정으로 확인한 부하테스트</h3>
+      <p class="lede">동시 참여가 몰릴 때 어디서 먼저 무너지는지 알지 못한 상태였습니다. 처리량이 정체하는 지점을 병목 신호로 보고 한계를 실측했고, <strong>먼저 세운 가설은 측정값이 뒤집었습니다.</strong></p>
+
+      <div class="tshoot">
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">01</span>
+            <span class="step-k">측정</span>
+            <p>k6 로 공구팀 참여 API 에 단계별 부하를 걸었습니다. 동시 사용자를 20배 늘려도 처리량이 <span class="fig-num">27.5 → 35.6 req/s</span> 로 거의 늘지 않고 <strong>지연만 증가</strong>했습니다. 어딘가에서 요청이 순서를 기다린다는 신호로 보고, 2,500부터 <strong>이진 탐색으로 좁혀</strong> 한계점을 확정했습니다.</p>
+            <div class="measure-wrap">
+              <table class="measure">
+                <caption>단계별 부하 — p95 응답과 실패율</caption>
+                <thead>
+                  <tr><th>동시 사용자</th><th>p95 응답</th><th>실패율</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>10</td><td>114ms</td><td>0%</td></tr>
+                  <tr><td>50</td><td>483ms</td><td>0%</td></tr>
+                  <tr><td>100</td><td>905ms</td><td>0%</td></tr>
+                  <tr><td>2,000</td><td>19.4초</td><td>0%</td></tr>
+                  <tr><td>2,970</td><td>—</td><td>0%</td></tr>
+                  <tr class="brk"><td>3,000</td><td>8초</td><td>37.68%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-n">02</span>
+            <span class="step-k">기각한 가설</span>
+            <p>정체의 원인을 <strong>락 경합</strong>이라 보고, 비관적 락을 원자적 UPDATE 로 바꾸면 처리량이 오를 것이라 가정했습니다. 같은 시나리오로 재측정한 결과는 <span class="fig-num">503ms 대 486ms</span> — 오차 범위였습니다. 개선됐다고 우기지 않고 <strong>가설을 폐기</strong>했습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">03</span>
+            <span class="step-k">병목 특정</span>
+            <p>실패가 급증한 지점에서 <strong>p95 가 19초에서 8초로 오히려 낮아졌습니다.</strong> 커넥션을 기다리다 타임아웃난 것이라면 지연이 더 올라가야 하므로, 요청이 애플리케이션에 도달하기 전에 <strong>연결 자체가 거부된 것</strong>으로 판단했습니다. DB 커넥션 풀이 아니라 <strong>Tomcat 의 연결 수용 한계</strong>입니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">04</span>
+            <span class="step-k">남긴 한계</span>
+            <p>처리량 상한의 다음 후보로 <strong>DB 커넥션 풀 기본값(10)</strong> 과 로그인 해싱 비용을 지목했지만, 로그인을 제외한 시나리오나 풀 크기를 늘린 재측정으로 <strong>두 요인을 분리하지는 못했습니다.</strong> 서버 지표(Actuator·APM)를 붙이지 않아 설정값과 실패 패턴으로 추론한 것도 한계입니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-label">Learnings</p>
+      <h3>배운 점</h3>
+      <dl class="learn">
+        <div><dt>LEARNING 01</dt><dd>컨테이너 환경에서는 런타임이 인식하는 리소스와 실제 할당량이 어긋날 수 있습니다. 인식값을 직접 대조하고 필요한 값은 기동 옵션으로 명시해야 합니다.</dd></div>
+        <div><dt>LEARNING 02</dt><dd>보안 테스트는 실제 요청 경로를 경유해 검증해야 합니다. 서비스 계층을 직접 호출하면 인가 필터를 건너뛰므로 우회 여부를 확인할 수 없습니다.</dd></div>
+        <div><dt>LEARNING 03</dt><dd>"고쳤다"는 판단에는 근거가 필요합니다. 증상만 보고 조치하면 원인이 남아 동일한 장애가 재발합니다.</dd></div>
+        <div><dt>LEARNING 04</dt><dd>성능 개선은 가설이 아니라 측정으로 판단해야 합니다. 그럴듯한 원인과 실제 병목은 다르며, 측정하지 않고 최적화하면 엉뚱한 곳을 고칩니다.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="project" style="--proj: var(--a-ilchwi); --proj-bg: var(--a-ilchwi-bg);">
+    <p class="project-mark">Project 02</p>
+    <h2>일취월장</h2>
+    <p class="subtitle">MySQL 인덱싱으로 고도화한 이커머스 API</p>
+    <p class="plinks">
+      <a href="https://github.com/gone09-sketch/team1-ilchwi-woljang" target="_blank" rel="noopener">Github</a>
+      <a href="https://github.com/gone09-sketch/team1-ilchwi-woljang/pull/97" target="_blank" rel="noopener">PR #97</a>
+    </p>
+
+    <p class="lede">상품 조회, 장바구니, 주문, 실시간 상담, AI 챗봇을 제공하는 Spring Boot 기반 API 서버입니다. 다섯 명이 기본 커머스 기능 위에 <strong>각자 다른 고도화 영역</strong>을 분담했고, 저는 주문 생성 API와 상품 조회·검색 인덱스를 담당했습니다.</p>
+
+    <dl class="meta">
+      <div><dt>기간</dt><dd>2026.06 – 2026.07 (2주)</dd></div>
+      <div><dt>팀</dt><dd>5인 · 각자 다른 고도화 영역 분담<br>(실시간 통신·인증인가 / 관리자 주문 인덱싱 / 동시성 제어 / 캐싱)</dd></div>
+      <div><dt>역할</dt><dd>주문 도메인 · 상품 조회·검색 인덱스 설계</dd></div>
+    </dl>
+
+    <div class="sub">
+      <p class="sub-label">Architecture</p>
+      <h3>고도화 영역 분담과 상품 조회 경로</h3>
+      <p class="lede">클라이언트가 REST API 또는 WebSocket 으로 요청을 전송하면 서버가 인증을 검증하고 도메인 로직을 처리합니다. <strong>상품 조회는 제가 설계한 복합 인덱스와 FULLTEXT 인덱스를 경유합니다.</strong> 인기 데이터의 Redis 캐싱은 다른 팀원의 고도화 영역입니다.</p>
+
+      <figure>
+        <svg viewBox="0 0 900 366" role="img" aria-label="일취월장 고도화 영역 분담도. 다섯 명이 각각 상품 조회·검색 인덱스, 실시간 통신 인가, 관리자 주문 검색, 재고 동시성 제어, 인기 데이터 캐싱을 담당했다. 민병준이 설계한 인덱스가 MySQL 조회 경로로 이어진다.">
+          <defs>
+            <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor" opacity="0.65"/>
+            </marker>
+            <marker id="ar3k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--proj)"/>
+            </marker>
+          </defs>
+
+          <rect class="sv-box" x="370" y="10" width="160" height="48" rx="10"/>
+          <text class="sv-t" x="450" y="32" text-anchor="middle">클라이언트</text>
+          <text class="sv-s" x="450" y="47" text-anchor="middle">REST API · STOMP WebSocket</text>
+
+          <line class="sv-line" x1="450" y1="58" x2="450" y2="92" marker-end="url(#ar3)"/>
+          <text class="sv-s" x="460" y="79">JWT 인증</text>
+
+          <rect class="sv-layer" x="14" y="98" width="872" height="158" rx="14"/>
+          <rect class="sv-cap" x="30" y="110" width="248" height="21" rx="10.5"/>
+          <text class="sv-s" x="154" y="124.5" text-anchor="middle">SPRING BOOT · 고도화 영역 — 5인 분담</text>
+
+          <rect class="sv-hi" x="30" y="140" width="161" height="104" rx="9"/>
+          <rect class="sv-bar" x="30" y="140" width="161" height="3.5" rx="1.75"/>
+          <text class="sv-a" x="44" y="163">민병준</text>
+          <text class="sv-at" x="44" y="182">상품 조회·검색</text>
+          <text class="sv-at" x="44" y="198">인덱스 설계</text>
+          <text class="sv-s" x="44" y="217">복합 인덱스 · 가격 범위</text>
+          <text class="sv-s" x="44" y="232">FULLTEXT 자동 생성</text>
+
+          <rect class="sv-box" x="199" y="140" width="161" height="104" rx="9"/>
+          <text class="sv-s" x="213" y="163">팀원 A</text>
+          <text class="sv-t" x="213" y="182">실시간 통신</text>
+          <text class="sv-t" x="213" y="198">인증·인가</text>
+          <text class="sv-s" x="213" y="217">STOMP 채널 권한</text>
+          <text class="sv-s" x="213" y="232">CONNECT 시 JWT 검증</text>
+
+          <rect class="sv-box" x="368" y="140" width="161" height="104" rx="9"/>
+          <text class="sv-s" x="382" y="163">팀원 B</text>
+          <text class="sv-t" x="382" y="182">관리자 주문</text>
+          <text class="sv-t" x="382" y="198">검색 최적화</text>
+          <text class="sv-s" x="382" y="217">QueryDSL 동적 검색</text>
+
+          <rect class="sv-box" x="537" y="140" width="161" height="104" rx="9"/>
+          <text class="sv-s" x="551" y="163">팀원 C</text>
+          <text class="sv-t" x="551" y="182">재고 동시성</text>
+          <text class="sv-t" x="551" y="198">제어</text>
+          <text class="sv-s" x="551" y="217">차감 시 비관적 락</text>
+          <text class="sv-s" x="551" y="232">동시 주문 초과 방지</text>
+
+          <rect class="sv-box" x="706" y="140" width="161" height="104" rx="9"/>
+          <text class="sv-s" x="720" y="163">팀원 D</text>
+          <text class="sv-t" x="720" y="182">인기 데이터</text>
+          <text class="sv-t" x="720" y="198">캐싱</text>
+          <text class="sv-s" x="720" y="217">Redis TTL 30분</text>
+          <text class="sv-s" x="720" y="232">장애 시 DB 폴백</text>
+
+          <path class="sv-dash" d="M 110 256 C 110 276 156 276 156 286" marker-end="url(#ar3k)"/>
+          <rect class="sv-capk" x="182" y="262" width="122" height="21" rx="10.5"/>
+          <text class="sv-a" x="243" y="276.5" text-anchor="middle">상품 조회·검색 경로</text>
+
+          <line class="sv-line" x1="450" y1="256" x2="450" y2="284" marker-end="url(#ar3)"/>
+
+          <rect class="sv-hi" x="14" y="290" width="284" height="62" rx="10"/>
+          <text class="sv-at" x="32" y="316">MySQL</text>
+          <text class="sv-s" x="32" y="335">복합 인덱스 · FULLTEXT · 테스트는 H2 로 분리</text>
+
+          <rect class="sv-box" x="308" y="290" width="284" height="62" rx="10"/>
+          <circle class="d-data" cx="326" cy="312" r="4"/>
+          <text class="sv-t" x="340" y="316">Redis</text>
+          <text class="sv-s" x="340" y="335">인기 상품·검색어 캐시 · 장애 시 DB 폴백</text>
+
+          <rect class="sv-box" x="602" y="290" width="284" height="62" rx="10"/>
+          <circle class="d-ext" cx="620" cy="312" r="4"/>
+          <text class="sv-t" x="634" y="316">OpenAI · Spring AI</text>
+          <text class="sv-s" x="634" y="335">상품 추천 · FAQ 챗봇</text>
+        </svg>
+        <figcaption>기본 도메인은 인증, 회원, 상품, 카테고리, 장바구니, 주문, 문의, 채팅, 챗봇, 검색으로 구성되고, 그 위에 각자의 고도화 영역이 얹힙니다. 색으로 표시한 경로가 제가 담당한 상품 조회·검색이며, 브랜치와 PR, 스쿼시 머지를 기준으로 협업했습니다.</figcaption>
+      </figure>
+    </div>
+
+    <div class="sub">
+      <p class="sub-label">Troubleshooting 01</p>
+      <h3>ORM 이 표현하지 못하는 인덱스를 기동 시점에 적용</h3>
+      <p class="lede">상품명 검색을 인덱스로 처리해야 했지만, 스키마가 JPA 의 자동 생성에만 의존하고 있어 ORM 이 표현하지 못하는 DDL 을 적용할 지점이 없었습니다. 마이그레이션 도구 도입이 정석이라고 봤지만 팀 일정상 해당 주차에 반영할 수 없었고, 그 제약 안에서 안전장치를 어디까지 둘지를 판단 기준으로 삼았습니다.</p>
+
+      <div class="tshoot">
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">01</span>
+            <span class="step-k">문제</span>
+            <p>상품명 검색이 인덱스 없이 <strong>풀스캔</strong>으로 처리되고 있었습니다. JPA 의 <code>@Index</code> 는 BTREE 만 지원해 FULLTEXT 인덱스를 선언할 수 없었고, 스키마 변경을 버전으로 관리하는 도구가 없어 DDL 을 적용할 지점 자체가 없었습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">02</span>
+            <span class="step-k">해결</span>
+            <p><code>ApplicationRunner</code> 를 구현해 기동 시 <code>information_schema</code> 로 인덱스 존재 여부를 조회하고, 부재 시 ngram parser 로 FULLTEXT 인덱스를 생성하도록 했습니다. 재기동에 대해 멱등하며, MySQL 전용 조회이므로 테스트 프로파일에서는 비활성화했습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">03</span>
+            <span class="step-k">결과</span>
+            <p>실행 계획이 풀스캔(<code>type: ALL</code>)에서 <code>fulltext</code> 로 전환된 것을 <code>EXPLAIN</code> 으로 확인했습니다. 데이터가 증가해도 검색 비용이 선형으로 늘지 않습니다. 다만 기동 시점 DDL 은 여러 인스턴스가 동시에 뜨면 경합이 생기고 스키마 변경 이력도 남지 않으므로 임시 방편입니다. <strong>같은 제약을 다시 만나면 Flyway 같은 마이그레이션 도구 도입을 먼저 설득하겠습니다.</strong></p>
+          </div>
+        </div>
+
+        <div class="snip">
+          <div class="snip-h">ProductFullTextIndexInitializer.java</div>
+<pre><span class="k">@Component</span>
+<span class="k">@RequiredArgsConstructor</span>
+<span class="k">@Profile</span>(<span class="s">"!test"</span>)   <span class="c">// information_schema 는 MySQL 전용</span>
+<span class="k">public class</span> ProductFullTextIndexInitializer
+        <span class="k">implements</span> ApplicationRunner {
+
+    <span class="k">private static final</span> String INDEX_NAME = <span class="s">"idx_product_name_fulltext"</span>;
+    <span class="k">private final</span> JdbcTemplate jdbcTemplate;
+
+    <span class="k">@Override</span>
+    <span class="k">public void</span> run(ApplicationArguments args) {
+        Integer count = jdbcTemplate.queryForObject(
+            <span class="s">"SELECT COUNT(*) FROM information_schema.statistics "</span>
+          + <span class="s">"WHERE table_schema = DATABASE() AND table_name = 'products' "</span>
+          + <span class="s">"AND index_name = ?"</span>,
+            Integer.class, INDEX_NAME);
+
+        <span class="c">// 이미 존재하면 생성하지 않는다 — 재기동에 대해 멱등</span>
+        <span class="k">if</span> (count == <span class="k">null</span> || count == <span class="k">0</span>) {
+            jdbcTemplate.execute(
+                <span class="s">"ALTER TABLE products ADD FULLTEXT INDEX "</span> + INDEX_NAME
+              + <span class="s">" (name) WITH PARSER ngram"</span>);
+        }
+    }
+}</pre>
+        </div>
+      </div>    </div>
+
+    <div class="sub">
+      <p class="sub-label">Troubleshooting 02</p>
+      <h3>가격 범위·상품명 검색 API 신규 구현과 인덱스 전후 성능 검증</h3>
+      <p class="lede">가격대로 상품을 조회하거나 상품명을 검색하는 사용자가 응답 지연을 겪고 있었습니다. <strong>두 조회는 병목의 원인이 서로 달라 해법도 나뉘었습니다.</strong></p>
+
+      <div class="tshoot">
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">01</span>
+            <span class="step-k">문제</span>
+            <p>가격 범위 조회는 인덱스가 없어 <code>filesort</code> 가 발생했고, 상품명 검색은 <code>LIKE</code> 패턴 매칭이라 풀스캔으로 처리됐습니다. <strong>데이터가 증가할수록 두 조회 모두 비용이 선형으로 증가하는 구조</strong>였습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">02</span>
+            <span class="step-k">해결</span>
+            <p>가격 범위 조회는 판매 상태로 걸러낸 뒤 가격으로 범위 검색하는 형태였으므로, <code>(status, price)</code> 복합 인덱스를 추가했습니다. <strong>등가 조건인 <code>status</code> 를 선행 컬럼에, 범위 조건인 <code>price</code> 를 후행 컬럼에 배치해야</strong> 인덱스가 정렬까지 흡수해 <code>range</code> 스캔으로 동작합니다. 상품명 검색은 성질이 달라 FULLTEXT 인덱스와 네이티브 쿼리로 엔드포인트를 분리했습니다.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">03</span>
+            <span class="step-k">결과</span>
+            <p>가격 범위 조회의 실행 계획이 <code>ref</code> 와 <code>filesort</code> 조합에서 <code>range</code> 로 전환되고, 순수 SQL 실행 시간이 <span class="fig-num">4.8초에서 0.09초</span>로 단축됐습니다. 다만 <strong>페이지네이션 count 쿼리는 새 인덱스를 사용하지 않아 체감 응답시간의 개선폭이 제한적이라는 점을 한계로 함께 기록했습니다.</strong> 원인 분석까지는 진행했고, 인덱스 힌트 적용 후 재측정은 하지 못했습니다.</p>
+          </div>
+        </div>
+
+        <div class="snip">
+          <div class="snip-h">Product.java · ProductRepository.java</div>
+<pre><span class="k">@Entity</span>
+<span class="k">@Table</span>(name = <span class="s">"products"</span>, indexes = {
+    <span class="c">// 판매 상태 + 가격 범위 조회용 — 컬럼 순서가 중요하다.
+    // status(등가)를 선행, price(범위)를 후행에 두어야 range 스캔으로 동작한다.</span>
+    <span class="k">@Index</span>(name = <span class="s">"idx_product_status_price"</span>, columnList = <span class="s">"status, price"</span>)
+})
+<span class="k">public class</span> Product { ... }
+
+<span class="c">// 가격 범위 조회 — 파생 쿼리가 (status, price) 복합 인덱스를 경유한다</span>
+Page&lt;Product&gt; findByStatusAndPriceBetween(
+        ProductStatus status, <span class="k">int</span> minPrice, <span class="k">int</span> maxPrice, Pageable pageable);
+
+<span class="c">// 상품명 검색 — JPQL 로 표현할 수 없는 MATCH ... AGAINST 는 네이티브 쿼리로</span>
+<span class="k">@Query</span>(value = <span class="s">"SELECT * FROM products "</span>
+      + <span class="s">"WHERE MATCH(name) AGAINST(:keyword IN BOOLEAN MODE) "</span>
+      + <span class="s">"AND status = :status"</span>, nativeQuery = <span class="k">true</span>)
+List&lt;Product&gt; searchByNameFullText(<span class="k">@Param</span>(<span class="s">"keyword"</span>) String keyword,
+                                   <span class="k">@Param</span>(<span class="s">"status"</span>) String status);</pre>
+        </div>
+      </div>    </div>
+
+    <div class="sub">
+      <p class="sub-label">Learnings</p>
+      <h3>배운 점</h3>
+      <dl class="learn">
+        <div><dt>LEARNING 01</dt><dd>마이그레이션 도구가 없는 환경에서는 ORM 이 지원하지 않는 인덱스를, 기동 시점에 스키마를 조회해 멱등하게 생성하는 방식으로 우회할 수 있습니다.</dd></div>
+        <div><dt>LEARNING 02</dt><dd>복합 인덱스는 실제 쿼리의 조건 조합과 정렬·범위 컬럼의 위치를 분석해 선행 컬럼 순서를 결정해야 합니다.</dd></div>
+        <div><dt>LEARNING 03</dt><dd>성능 개선은 실행 계획과 실측 응답시간을 적용 전후로 대조해 검증하고, 개선되지 않은 구간도 한계로 함께 기록해야 합니다.</dd></div>
+        <div><dt>LEARNING 04</dt><dd>여러 명이 같은 코드를 다루는 환경에서는 동작 여부만큼 응답 규격과 코드 스타일의 일관성도 중요합니다.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="closing">
+    <p>두 프로젝트 모두 <strong>원인을 규명하기 전에는 해결했다고 판단하지 않는 것</strong>을 기준으로 삼았습니다.</p>
+    <p>제가 내린 판단과 그 근거를 더 보고 싶으시면 언제든 연락 주세요.</p>
+  </section>
+
+  <footer class="foot">
+    <span>민병준 · byeongjunmin00@gmail.com · 010-9346-4590</span>
+    <button class="themetoggle" type="button" id="tt" aria-label="화면 테마 전환">테마 전환</button>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  document.getElementById('tt').addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark';
+    if (!root.hasAttribute('data-theme')) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+})();
+</script>
+</body>
+</html>
